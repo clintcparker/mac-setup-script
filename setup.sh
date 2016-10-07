@@ -1,103 +1,39 @@
 #!/usr/bin/env bash
 
 brews=(
-  android-platform-tools
-  archey
-  aws-shell
-  bash
-  brew-cask
-  cheat
-  clib
-  coreutils
-  dfc
-  findutils
-  fontconfig --universal
-  fpp
-  fzf
-  git
-  git-extras
-  git-lfs
-  gnuplot --with-qt
-  go
-  gpg
-  hh
-  htop
-  httpie
-  iftop
-  imagemagick
-  lighttpd
-  lnav
-  lumen
-  mackup
-  macvim
-  mtr
-  ncdu
-  nmap
-  node
-  poppler
-  postgresql
-  pgcli
-  python
-  python3
-  scala
-  sbt
-  stormssh
-  thefuck
-  tmux
-  tree
-  trash
-  wget
+	autoconf
+	bash-completion
+	fdupes
+	fish
+	gdbm
+	git
+	git-credential-manager
+	git-lfs
+	libyaml
+	mycli
+	node
+	openssl
+	pcre2
+	pkg-config
+	pv
+	python
+	rbenv
+	readline
+	ruby
+	ruby-build
+	sqlite
+	wget
 )
 
 casks=(
-  adobe-reader
-  airdroid
-  asepsis
-  atom
-  betterzipql
-  cakebrew
-  chromecast
-  cleanmymac
-  commander-one
-  datagrip
-  dockertoolbox
-  dropbox
-  firefox
-  franz
-  google-chrome
-  google-drive
-  github-desktop
-  hosts
-  handbrake
-  intellij-idea
-  istat-menus
-  istat-server
-  licecap
-  iterm2
-  qlcolorcode
-  qlmarkdown
-  qlstephen
-  quicklook-json
-  quicklook-csv
-  launchrocket
-  microsoft-office
-  plex-home-theater
-  plex-media-server
-  private-eye
-  satellite-eyes
-  sidekick
-  skype
-  slack
-  spotify
-  steam
-  teleport
-  transmission
-  transmission-remote-gui
-  tunnelbear
-  vlc
-  volumemixer
-  webstorm
-  xquartz
+	eclipse-java
+	eclipse-jee
+	flowdock
+	google-chrome
+	google-drive
+	imageoptim
+	java
+	macdown
 )
 
 pips=(
@@ -108,6 +44,9 @@ pips=(
 
 gems=(
   bundle
+	octopress
+	octopress-deploy
+	octopress-ink
 )
 
 npms=(
@@ -140,10 +79,10 @@ git_configs=(
   "rebase.autostash true"
   "rerere.autoUpdate true"
   "rerere.enabled true"
-  "user.name pathikrit"
-  "user.email pathikritbhowmick@msn.com"
+  "user.name clintcparker"
+  "user.email clintcparker@gmail.com"
 )
-gpg_key='3E219504'
+#gpg_key='3E219504'
 
 apms=(
   atom-beautify
@@ -167,6 +106,9 @@ omfs=(
 ######################################## End of app list ########################################
 set +e
 set -x
+
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/clintcparker/mac-cli/master/mac-cli/tools/install)"
+
 
 if test ! $(which brew); then
   echo "Installing Xcode ..."
@@ -229,35 +171,35 @@ install 'brew cask install --appdir=/Applications' ${casks[@]}
 
 echo "Installing secondary packages ..."
 # TODO: add info part of install or do reinstall?
-install 'pip install --upgrade' ${pips[@]}
+#install 'pip install --upgrade' ${pips[@]}
 install 'gem install' ${gems[@]}
-install 'clib install' ${clibs[@]}
-install 'bpkg install' ${bpkgs[@]}
+#install 'clib install' ${clibs[@]}
+#install 'bpkg install' ${bpkgs[@]}
 install 'npm install --global' ${npms[@]}
-install 'apm install' ${apms[@]}
+#install 'apm install' ${apms[@]}
 install 'brew cask install' ${fonts[@]}
 
-echo "Upgrading bash ..."
-sudo bash -c "echo $(brew --prefix)/bin/bash >> /private/etc/shells"
-cd; curl -#L https://github.com/barryclark/bashstrap/tarball/master | tar -xzv --strip-components 1 --exclude={README.md,screenshot.png}
-source ~/.bash_profile
+#echo "Upgrading bash ..."
+#sudo bash -c "echo $(brew --prefix)/bin/bash >> /private/etc/shells"
+#cd; curl -#L https://github.com/barryclark/bashstrap/tarball/master | tar -xzv --strip-components 1 --exclude={README.md,screenshot.png}
+#source ~/.bash_profile
 
 echo "Setting git defaults ..."
 for config in "${git_configs[@]}"
 do
   git config --global ${config}
 done
-gpg --keyserver hkp://pgp.mit.edu --recv ${gpg_key}
-git config --global user.signingkey ${gpg_key}
+#gpg --keyserver hkp://pgp.mit.edu --recv ${gpg_key}
+#git config --global user.signingkey ${gpg_key}
 
-echo "Setting up go ..."
-mkdir -p /usr/libs/go
-echo "export GOPATH=/usr/libs/go" >> ~/.bashrc
-echo "export PATH=$PATH:$GOPATH/bin" >> ~/.bashrc
+#echo "Setting up go ..."
+#mkdir -p /usr/libs/go
+#echo "export GOPATH=/usr/libs/go" >> ~/.bashrc
+#echo "export PATH=$PATH:$GOPATH/bin" >> ~/.bashrc
 
 echo "Upgrading ..."
-pip install --upgrade setuptools
-pip install --upgrade pip
+#pip install --upgrade setuptools
+#pip install --upgrade pip
 gem update --system
 
 echo "Cleaning up ..."
@@ -270,24 +212,33 @@ do
   echo "Failed to install: $fail"
 done
 
-echo "Run `mackup restore` after DropBox has done syncing"
+#echo "Run `mackup restore` after DropBox has done syncing"
 
+echo "https://gist.githubusercontent.com/clintcparker/41ae62a308719ab0cdb3aa1edfd82239/raw/osx-for-hackers.sh"
 read -p "Hit enter to run [OSX for Hackers] script..." c
-sh -c "$(curl -sL https://gist.githubusercontent.com/brandonb927/3195465/raw/osx-for-hackers.sh)"
+sh -c "$(curl -sL https://gist.githubusercontent.com/clintcparker/41ae62a308719ab0cdb3aa1edfd82239/raw/osx-for-hackers.sh)"
 
-#echo "Setting up fish shell ..."
+echo "Setting up fish shell ..."
+
 #brew install fish chruby-fish
-#echo $(which fish) | sudo tee -a /etc/shells
-#mkdir -p ~/.config/fish/
-#echo "source /usr/local/share/chruby/chruby.fish" >> ~/.config/fish/config.fish
-#echo "source /usr/local/share/chruby/auto.fish" >> ~/.config/fish/config.fish
+echo $(which fish) | sudo tee -a /etc/shells
+mkdir -p ~/.config/fish/
+echo "source /usr/local/share/chruby/chruby.fish" >> ~/.config/fish/config.fish
+echo "source /usr/local/share/chruby/auto.fish" >> ~/.config/fish/config.fish
 #echo "export GOPATH=/usr/libs/go" >> ~/.config/fish/config.fish
 #echo "export PATH=$PATH:$GOPATH/bin" >> ~/.config/fish/config.fish
-#chsh -s $(which fish)
-#curl -L https://github.com/oh-my-fish/oh-my-fish/raw/master/bin/install | fish
-#for omf in ${omfs[@]}
-#do
-#  fish -c "omf install ${omf}"
-#done
+chsh -s $(which fish)
+curl -L https://github.com/oh-my-fish/oh-my-fish/raw/master/bin/install | fish
+for omf in ${omfs[@]}
+do
+  fish -c "omf install ${omf}"
+done
+
+fish -c fish_update_completions
+fish -c 'git clone --recursive https://github.com/clintcparker/fish_functions.git $fish_function_path[1]'
+fish -c 'set -g fish_function_path $fish_function_path $fish_function_path[1]/jonmarkprice/fish-functions/'
+
 
 echo "Done!"
+
+fish
