@@ -104,10 +104,13 @@ omfs=(
 )
 
 ######################################## End of app list ########################################
+
+
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/clintcparker/mac-cli/master/mac-cli/tools/install)"
+
 set +e
 set -x
 
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/clintcparker/mac-cli/master/mac-cli/tools/install)"
 
 
 if test ! $(which brew); then
