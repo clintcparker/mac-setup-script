@@ -237,7 +237,7 @@ done
 
 fish -c fish_update_completions
 fish -c 'git clone --recursive https://github.com/clintcparker/fish_functions.git $fish_function_path[1]'
-fish -c 'set -g fish_function_path $fish_function_path $fish_function_path[1]/jonmarkprice/fish-functions/'
+fish -c 'set -gx fish_function_path $fish_function_path $fish_function_path[1]/jonmarkprice/fish-functions/'
 
 
 echo "Done!"
