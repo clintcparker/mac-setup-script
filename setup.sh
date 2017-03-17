@@ -23,11 +23,11 @@ brews=(
 	ruby-build
 	sqlite
 	wget
+	chruby-fish
 )
 
 casks=(
 	eclipse-java
-	eclipse-jee
 	flowdock
 	google-chrome
 	google-drive
@@ -55,7 +55,6 @@ npms=(
   gitjk
   kill-tabs
   n
-  nuclide-installer
   speed-test
   wifi-password
 )
