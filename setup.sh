@@ -217,11 +217,6 @@ done
 
 #echo "Run `mackup restore` after DropBox has done syncing"
 
-echo "https://gist.githubusercontent.com/clintcparker/41ae62a308719ab0cdb3aa1edfd82239/raw/osx-for-hackers.sh"
-read -p "Hit enter to run [OSX for Hackers] script..." c
-set +x
-sh -c 'sh -c "$(curl -sL https://gist.githubusercontent.com/clintcparker/41ae62a308719ab0cdb3aa1edfd82239/raw/osx-for-hackers.sh)"'
-set -x
 
 
 echo "Setting up fish shell ..."
@@ -248,3 +243,9 @@ fish -c 'set -g fish_function_path $fish_function_path $fish_function_path[1]/jo
 echo "Done!"
 
 fish
+
+echo "https://gist.githubusercontent.com/clintcparker/41ae62a308719ab0cdb3aa1edfd82239/raw/osx-for-hackers.sh"
+read -p "Hit enter to run [OSX for Hackers] script..." c
+set +x
+sh -c 'sh -c "$(curl -sL https://gist.githubusercontent.com/clintcparker/41ae62a308719ab0cdb3aa1edfd82239/raw/osx-for-hackers.sh)"'
+set -x
