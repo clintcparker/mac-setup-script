@@ -106,7 +106,7 @@ omfs=(
 ######################################## End of app list ########################################
 
 
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/clintcparker/mac-cli/master/mac-cli/tools/install)"
+sh -c 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/clintcparker/mac-cli/master/mac-cli/tools/install)"'
 
 set +e
 
@@ -221,7 +221,7 @@ done
 echo "https://gist.githubusercontent.com/clintcparker/41ae62a308719ab0cdb3aa1edfd82239/raw/osx-for-hackers.sh"
 read -p "Hit enter to run [OSX for Hackers] script..." c
 set +x
-sh -c "$(curl -sL https://gist.githubusercontent.com/clintcparker/41ae62a308719ab0cdb3aa1edfd82239/raw/osx-for-hackers.sh)"
+sh -c 'sh -c "$(curl -sL https://gist.githubusercontent.com/clintcparker/41ae62a308719ab0cdb3aa1edfd82239/raw/osx-for-hackers.sh)"'
 set -x
 
 
